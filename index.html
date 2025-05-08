@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A clone of eBay with a light blue theme, showcasing various products.">
+    <meta name="keywords" content="ecommerce, online shopping, ebay clone, products, deals">
+    <title> NuNua E-Shop </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">Nunua App</div>
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search for anything">
+                <button id="search-button">Search</button>
+            </div>
+            <nav class="top-nav">
+                <a href="signin.html" id="signin-link">Sign in</a> or <a href="register.html" id="register-link">register</a>
+                <a href="cart.html" id="cart-link">
+                    <i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)
+                  </a>                 
+                <div class="currency-switcher-container">
+                    <select id="currency-switcher">
+                        <option value="USD">USD</option>
+                        <option value="KES">KES</option>
+                    </select>
+                </div>
+            </nav>
+            <button id="mobile-menu-toggle">&#9776;</button>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <a href="#" class="main-category-link" data-category="electronics">Electronics</a>
+            <a href="#" class="main-category-link" data-category="fashion">Fashion</a>
+            <a href="#" class="main-category-link" data-category="home">Home & Garden</a>
+            <a href="#" class="main-category-link" data-category="collectibles">Collectibles & Art</a>
+            <a href="#" class="main-category-link" data-category="motors">Motors</a>
+            <a href="#" class="main-category-link" data-category="deals">Deals</a>
+        </nav>
+        <div class="breadcrumb">
+            <a href="#">Home</a> &gt; <span id="breadcrumb-category">All Categories</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="promotions">
+            <div class="carousel">
+                <div class="carousel-item active">
+                    <img src="https://images.pexels.com/photos/7564159/pexels-photo-7564159.jpeg?auto=compress&cs=tinysrgb&w=600" alt="50% off1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/12727638/pexels-photo-12727638.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vizzy">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/5872295/pexels-photo-5872295.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Promotion 3">
+                </div>
+                <button class="carousel-prev">&lt;</button>
+                <button class="carousel-next">&gt;</button>
+            </div>
+        </section>
+
+        <section class="product-filters">
+            <label for="category-filter">Filter by Category:</label>
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home & Garden</option>
+            </select>
+            <label for="sort-filter">Sort by:</label>
+            <select id="sort-filter">
+                <option value="default">Default</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Rating</option>
+            </select>
+        </section>
+
+        <section class="product-listing">
+            <h2>Featured Items</h2>
+            <div class="product-grid" id="product-grid">
+                <!-- Product cards injected by JavaScript -->
+            </div>
+            <button id="load-more-products" style="display: none;">Load More</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="newsletter-signup">
+            <h4>Stay Updated!</h4>
+            <form id="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Help</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <p>&copy; 2025 Nunua. All rights reserved.</p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="quick-view-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-quick-view">&times;</span>
+            <h3 id="modal-product-name">Product Name</h3>
+            <img id="modal-product-image" src="" alt="Product Image" style="max-width: 300px; display: block; margin: 10px auto;">
+            <p id="modal-product-description">Product description goes here...</p>
+            <p><strong>Price:</strong> <span id="modal-product-price">$0.00</span></p>
+            <p><strong>Category:</strong> <span id="modal-product-category">Category</span></p>
+            <button id="modal-add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <button id="back-to-top" title="Go to top">&uarr;</button>
+
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+    <script>
+        // Prevent default and enable JS-driven filtering for main-nav links
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.main-category-link').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();                  
+                });
+            });
+        });
+    </script>
+</body>
+</html>
